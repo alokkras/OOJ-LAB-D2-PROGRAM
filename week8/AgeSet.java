@@ -1,4 +1,6 @@
+import java.util.Scanner.*;
 import java.util.*;
+import java.lang.*;
 
 class  WrongAge extends Exception
 {
@@ -14,8 +16,8 @@ class  WrongAge extends Exception
    Father(int age1)
    { 
       age=age1;
-      System.out.println("FATHER'S AGE::"+age);
     }
+
 }
 
  class Son extends Father
@@ -23,18 +25,21 @@ class  WrongAge extends Exception
       Son(int age1) 
       {
          super(age1);
-          System.out.println("Son's age::"+age);
       }
+
 }
 
 public class AgeSet
 {
     public static void main(String args[]) throws WrongAge
     { 
-        int i=args.length;
-        int j=Integer.parseInt(args[0]);
-       int k=Integer.parseInt(args[1]);
-      
+       Scanner ss =new Scanner(System.in);
+       int j,k;
+        System.out.println("Enter the age of the father");
+       j = ss.nextInt();
+       System.out.println("Enter the age of the son");
+        k= ss.nextInt();
+       try{
         if(j<=0 ||j<=k)
        { 
           throw new WrongAge();
@@ -43,9 +48,22 @@ public class AgeSet
         {
            Father f=new Father(j);
            Son s=new Son(k);
+          System.out.println("Father's Age is::"+j);
+          System.out.println("Son's Age::"+k);
         }
-    }
+     }
+      catch (ArithmeticException e) 
+    {
+     System.out.println("Caught " + e);
+     }
+ }
 }
+
+
+
+
+
+
 
 
  
